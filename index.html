@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+</head>
+<body>
+    <h1>Biblioteca Home</h1>
+
+    <h2>Galeria de livros:</h2>
+    <ul id="book-list">
+        
+    </ul>
+
+    <script>
+        const bookList = document.getElementById('book-list');
+        console.log(bookList);
+        
+        fetch('https://biblioteca-qq4n.onrender.com/users')
+        .then(function(response) {
+            
+            if(!response.ok) {
+                console.log("Erro ao buscar dados da API");
+            }
+            return response.json();
+        })
+        .then(function (response) {
+            console.log(response.data);
+
+            response.data.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = item.name;
+                bookList.appendChild(li);         
+                
+            });
+        })
+        .catch(function(error) {
+            console.log(error.message);
+            
+        })
+    </script>
+
+</body>
+</html>
