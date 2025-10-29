@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../output.css" rel="stylesheet">
+    <title>Registrar-se</title>
+</head>
+<body>
+    <h1>Register</h1>
+
+    <form>
+        <div>
+            <label for="name">Name:</label>
+            <input id="name" type="text" name="name">
+        </div>
+        <div>
+            <label for="username">Username:</label>
+            <input id="username" type="text" name="username">
+        </div>
+        <div>
+            <label for="password">Senha:</label>
+            <input id="password" type="text" name="password">
+        </div>
+
+        <button type="submit">Enviar</button>
+        
+    </form>
+
+    <script type="module">
+        import {url_api} from "../../js/env.js"
+
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", login);
+
+        async function login(e) {
+            e.preventDefault();
+            
+            const name = e.target.name.value;
+            const username = e.target.username.value;
+            const password = e.target.password.value;
+            
+            try {
+                
+                const response = await fetch(`${url_api}/users`, {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({ name, username, password })
+                });
+
+                const data = await response.json();
+                
+                console.log(data);
+                
+                
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    </script>
+
+</body>
+</html>

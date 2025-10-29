@@ -7,6 +7,17 @@
     <title>Biblioteca</title>
 </head>
 <body class="bg-gray-200">
+
+    <nav class="flex justify-between">
+        <div>
+            ReadMore
+        </div>
+        <div class="space-x-2">
+            <a class="" href="src/pages/auth/register.html">Registrar</a>
+            <a class="" href="src/pages/auth/login.html">Login</a>
+        </div>
+    </nav>
+
     <h1 class="text-2xl font-bold">Biblioteca Home</h1>
 
     <h2 class="bg-blue-700">Galeria de livros:</h2>
@@ -14,33 +25,7 @@
         
     </ul>
 
-    <script>
-        const bookList = document.getElementById('book-list');
-        console.log(bookList);
-        
-        fetch('https://biblioteca-qq4n.onrender.com/users')
-        .then(function(response) {
-            
-            if(!response.ok) {
-                console.log("Erro ao buscar dados da API");
-            }
-            return response.json();
-        })
-        .then(function (response) {
-            console.log(response.data);
-
-            response.data.forEach(item => {
-                const li = document.createElement('li');
-                li.innerHTML = item.name;
-                bookList.appendChild(li);         
-                
-            });
-        })
-        .catch(function(error) {
-            console.log(error.message);
-            
-        })
-    </script>
+    <script type="module" src="src/js/home.js"></script>
 
 </body>
 </html>
