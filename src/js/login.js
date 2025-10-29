@@ -7,6 +7,7 @@ async function login(e) {
 
   const username = e.target.username.value;
   const password = e.target.password.value;
+  const error = document.getElementById("error");
 
   try {
     const response = await fetch(`${url_api}/users/login`, {
@@ -17,10 +18,23 @@ async function login(e) {
 
     const data = await response.json();
 
-    localStorage.setItem("token", data.token);
-    window.location.href = "../users/dashboard.html";
+    if(response.ok === false) {
 
-    console.log(data);
+      error.classList.remove("hidden");
+      error.classList.add("block");
+      error.innerHTML = data.message;
+
+    } else {
+      
+      if(error.classList.contains("block")) {
+        error.classList.remove("block");
+        error.classList.add("hidden");
+      }
+
+      localStorage.setItem("token", data.token);
+      window.location.href = "../users/dashboard.html";
+    }
+
   } catch (error) {
     console.log(error);
   }
