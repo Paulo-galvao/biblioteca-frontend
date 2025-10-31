@@ -1,15 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    dashboard
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title></title>
+  </head>
+  <body class="main-settings">
+    <nav class=""> 
+      <div class="border-b-2 flex flex-col items-center py-12 space-y-2">  
+        <i class="bx bx-user text-5xl "></i>
+        <div>
+          <p id="name"><!-- name --></p>
+          <p id="username"><!-- username --></p>
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <a href="../users/update.html">Alterar dados</a>
+        </div>
+        <div>
+          <a href="../books/store.html">Cadastrar novo livro</a>
+        </div>
+        <div>
+          <div>Suas Postagens</div>
+          <ul id="books">
+            <li class="book post"></li>
+          </ul>
+        </div>
+      </div>
+
+    </nav>
 
     <p></p>
 
     <script type="module" src="../../js/dashboard.js"></script>
-</body>
+  </body>
 </html>

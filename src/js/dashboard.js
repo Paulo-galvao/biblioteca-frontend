@@ -4,6 +4,11 @@ checkUser();
 
 async function checkUser() {
   const token = localStorage.getItem("token");
+
+  const title = document.querySelector("title");
+  const name = document.getElementById("name");
+  const username = document.getElementById("username");
+  const books = document.getElementById("books");
   
   try {
     const response = await fetch(`${url_api}/users/dashboard`, {
@@ -14,9 +19,26 @@ async function checkUser() {
       },
     });
 
+    if(response.status === 401) {
+      window.location.href = "../auth/login.html";
+    }
+    
     const data = await response.json();
+    console.log(data);
+    
 
-    document.querySelector("p").innerHTML = `Usuário: ${data.user.name}`;
+    title.innerText = data.user.name;
+    name.innerHTML = `Usuário: ${data.user.name}`;
+    username.innerHTML = `Username: ${data.user.username}`;
+
+    data.books.forEach(function(book) {
+      console.log(book);
+      const li = document.createElement("li");
+      li.innerHTML = `<a href="index.html"> - ${book.title}(${book.written_by}<a/>)`;
+      books.appendChild(li);
+    })
+    
+
   } catch (error) {
     console.log(error);
   }

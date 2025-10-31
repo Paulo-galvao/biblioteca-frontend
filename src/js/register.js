@@ -8,6 +8,7 @@ async function register(e) {
   const name = e.target.name.value;
   const username = e.target.username.value;
   const password = e.target.password.value;
+  const error = document.getElementById("error-register");
 
   try {
     const response = await fetch(`${url_api}/users`, {
@@ -18,22 +19,15 @@ async function register(e) {
 
     const data = await response.json();
 
-    if(response.ok === false) {
-      error.classList.remove("hidden");
-      error.classList.add("block");
+    if (response.ok === false) {
+      error.classList.remove("invisible");
       error.innerHTML = data.message;
     } else {
-
-      if(error.classList.contains("block")) {
-        error.classList.remove("block");
-        error.classList.add("hidden");
-      }
+      error.classList.add("invisible");
 
       localStorage.setItem("token", data.token);
       window.location.href = "../users/dashboard.html";
-
     }
-
   } catch (error) {
     console.log(error);
   }

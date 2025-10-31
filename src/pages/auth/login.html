@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="../../output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/main.css">
     <title>Login</title>
   </head>
   <body>
-    <div class="bg-gray-800 h-screen text-white flex flex-col justify-center items-center">
+    <div class="main-settings h-screen flex flex-col justify-center items-center">
       <h1 class="py-2 text-2xl">Login</h1>
 
-      <form class="flex flex-col">
+      <form class="flex flex-col relative">
         <div>
           <label class="py-1 block " for="username">Username:</label>
           <input class="bg-gray-700 w-72 py-1 outline-0 focus:outline-2 outline-purple-700 " id="username" type="text" name="username" />
@@ -20,9 +21,9 @@
           <input class="bg-gray-700 w-72 py-1 outline-0 focus:outline-2 outline-purple-700 " id="password" type="password" name="password" />
         </div>
 
-        <div id="error" class="hidden">error message</div>
+        <div id="error-login" class="invisible error py-2 w-screen absolute top-[122px]">error message</div>
 
-        <button class="my-4 py-2 px-8 bg-gray-500 cursor-pointer hover:bg-gray-400 duration-500 " type="submit">Enviar</button>
+        <button class="mt-10 w-72 py-2 px-8 bg-gray-500 cursor-pointer hover:bg-gray-400 hover:text-gray-800 duration-600" type="submit">Enviar</button>
       </form>
     </div>
 
