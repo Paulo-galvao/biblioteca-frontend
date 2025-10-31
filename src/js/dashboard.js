@@ -34,7 +34,7 @@ async function checkUser() {
     data.books.forEach(function(book) {
       console.log(book);
       const li = document.createElement("li");
-      li.innerHTML = `<a href="index.html"> - ${book.title}(${book.written_by}<a/>)`;
+      li.innerHTML = `<a href="../books/show.html?id=${book.id}"> - ${book.title}(${book.written_by}<a/>)`;
       books.appendChild(li);
     })
     
