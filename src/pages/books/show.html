@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <title></title>
   </head>
-  <body class="main-settings">
-    <nav class="flex justify-between">
+  <body class="main-settings h-screen">
+    <nav class="flex justify-between items-center h-1/10 border-b ">
         <div>
             <a href="/index.html">ReadMore</a>
         </div>
@@ -19,7 +19,8 @@
         </div>
     </nav>
 
-    <div id="books-show" class="flex flex-col items-center justify-center h-screen space-y-4">
+    <div id="books-show" 
+        class="flex flex-col items-center justify-center space-y-4 h-9/10">
 
     </div>
 
@@ -35,12 +36,9 @@
 
         async function show() {
             const booksShow = document.getElementById("books-show");
-            
-            
+                   
             try {
                 const response = await fetch(`${url_api}/books/${id}`);
-                
-                console.log(response);
 
                 if(!response.ok) {
                     booksShow.innerHTML = `<div>Nenhum resultado encontrado</div>`

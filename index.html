@@ -1,31 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="src/output.css" rel="stylesheet">
-    <link rel="stylesheet" href="./src/css/main.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="src/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./src/css/main.css" />
     <title>Biblioteca</title>
-</head>
-<body class="main-settings"> 
+  </head>
+  <body class="main-settings h-screen">
+    <nav class="flex justify-between items-center h-1/10 border-b px-4">
+      <div>
+        <a href="/index.html">ReadMore</a>
+      </div>
+      <!-- GUEST -->
+      <div id="guest" class="space-x-2 visible">
+        <a class="" href="/src/pages/auth/register.html">Registrar</a>
+        <a class="" href="/src/pages/auth/login.html">Login</a>
+      </div>
+      <!-- USER -->
+      <div id="user" class="space-x-2 hidden">
+        <a id="logged-user" class="" href="/src/pages/users/dashboard.html"
+          >User</a
+        >
+      </div>
 
-    <nav class="flex justify-between">
-        <div>
-            <a href="/index.html">ReadMore</a>
-        </div>
-        <div class="space-x-2">
-            <a class="" href="src/pages/auth/register.html">Registrar</a>
-            <a class="" href="src/pages/auth/login.html">Login</a>
-        </div>
+      <script type="module">
+        import { url_api } from "/src/js/env.js";
+
+        const token = localStorage.getItem("token");
+        const guest = document.getElementById("guest");
+        const user = document.getElementById("user");
+        const loggedUser = document.getElementById("logged-user");
+
+        const response = await fetch(`${url_api}/users/dashboard`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        
+
+        if(response.ok) {
+            const data = await response.json();
+            if(data.logged) {
+                guest.classList.remove("visible");
+                guest.classList.add("hidden");
+                loggedUser.innerText = data.user.name;
+                user.classList.remove("hidden");
+                user.classList.add("visible");
+            } else {
+                guest.classList.remove("hidden");
+                guest.classList.add("visible");
+                user.classList.remove("hidden");
+                user.classList.add("visible"); 
+            }
+        }
+
+
+      </script>
     </nav>
 
-    <h1 class="text-2xl font-bold">Biblioteca Home</h1>
+    <div class="h-9/10">
+      <h1 class="text-2xl font-bold">Biblioteca Home</h1>
+      <h2 class="bg-blue-700">Galeria de livros:</h2>
 
-    <h2 class="bg-blue-700">Galeria de livros:</h2>
-    
-    <ul id="book-list"></ul>
+      <ul id="book-list"></ul>
+    </div>
 
-    <script type="module" src="src/js/home.js"></script>
-
-</body>
+    <script type="module" src="/src/js/home.js"></script>
+  </body>
 </html>
