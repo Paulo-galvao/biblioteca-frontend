@@ -3,64 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/src/output.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/src/css/main.css" />
-    <link
-      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-    />
-    <title></title>
+
+    <link href="src/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./src/css/main.css" />
+
+    <title>Biblioteca</title>
   </head>
-  <body class="main-settings h-screen">
-    <nav class="flex justify-between items-center h-1/10 border-b px-4">
-      <div>
-        <a href="/index.html">ReadMore</a>
+  <body>
+    <div class="main-settings h-screen w-screen flex flex-col items-center">
+      <div class="h-full w-full max-w-[1200px]">
+        <navigation-menu></navigation-menu>
+
+        <div class="h-9/10">body</div>
       </div>
-      <!-- GUEST -->
-      <div id="guest" class="space-x-2 visible">
-        <a class="" href="/src/pages/auth/register.html">Registrar</a>
-        <a class="" href="/src/pages/auth/login.html">Login</a>
-      </div>
-      <!-- USER -->
-      <div id="user" class="space-x-2 hidden">
-        <a id="logged-user" class="" href="/src/pages/users/dashboard.html"
-          >User</a
-        >
-      </div>
-
-      <script type="module">
-        import { url_api } from "/src/js/env.js";
-
-        const token = localStorage.getItem("token");
-        const guest = document.getElementById("guest");
-        const user = document.getElementById("user");
-        const loggedUser = document.getElementById("logged-user");
-
-        const response = await fetch(`${url_api}/users/dashboard`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        const data = await response.json();
-
-        if (data.logged) {
-          guest.classList.remove("visible");
-          guest.classList.add("hidden");
-          loggedUser.innerText = data.user.name;
-          user.classList.remove("hidden");
-        }
-      </script>
-    </nav>
-
-    <div class="h-9/10">
-      <!-- body -->
     </div>
+
+    <script type="module" src="/src/components/navigation.js"></script>
+    
+    <script type="module" src="/src/js/header.js"></script>
+    <script type="module" src="/src/js/home.js"></script>
   </body>
 </html>

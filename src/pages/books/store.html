@@ -16,48 +16,8 @@
     <title></title>
   </head>
   <body class="main-settings h-screen">
-    <nav class="flex justify-between items-center h-1/10 border-b px-4">
-      <div>
-        <a href="/index.html">ReadMore</a>
-      </div>
-      <!-- GUEST -->
-      <div id="guest" class="space-x-2 visible">
-        <a class="" href="/src/pages/auth/register.html">Registrar</a>
-        <a class="" href="/src/pages/auth/login.html">Login</a>
-      </div>
-      <!-- USER -->
-      <div id="user" class="space-x-2 hidden">
-        <a id="logged-user" class="" href="/src/pages/users/dashboard.html"
-          >User</a
-        >
-      </div>
-
-      <script type="module">
-        import { url_api } from "/src/js/env.js";
-
-        const token = localStorage.getItem("token");
-        const guest = document.getElementById("guest");
-        const user = document.getElementById("user");
-        const loggedUser = document.getElementById("logged-user");
-
-        const response = await fetch(`${url_api}/users/dashboard`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        const data = await response.json();
-
-        if (data.logged) {
-          guest.classList.remove("visible");
-          guest.classList.add("hidden");
-          loggedUser.innerText = data.user.name;
-          user.classList.remove("hidden");
-        }
-      </script>
-    </nav>
+    
+    <navigation-menu></navigation-menu>
 
     <div class="h-9/10 flex items-center justify-center">
       

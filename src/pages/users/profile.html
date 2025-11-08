@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/src/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/css/main.css" />
+    <title>Biblioteca</title>
+  </head>
+  <body class="main-settings h-screen w-screen flex justify-center">
+    <div class="main-settings h-full max-w-[1200px] flex-col justify-center">
+      <nav class="flex justify-between items-center h-1/10 border-b px-4">
+        <div>
+          <a href="/index.html">ReadMore</a>
+        </div>
+        <!-- GUEST -->
+        <div id="guest" class="space-x-2">
+          <a class="" href="/src/pages/auth/register.html">Registrar</a>
+          <a class="" href="/src/pages/auth/login.html">Login</a>
+        </div>
+        <!-- USER -->
+        <div id="user" class="space-x-2 hidden">
+          <a id="logged-user" class="" href="/src/pages/users/dashboard.html"
+            >User</a
+          >
+        </div>
+      </nav>
+
+      <div class="h-9/10">
+        <h2 class="text-2xl ml-2">Seu perfil</h2>
+
+        <div class="">
+          <form class="flex-col relative">
+            <div>
+              <label class="py-1 block" for="name">Nome</label>
+              <input
+                class="bg-gray-700 w-72 py-1 outline-0 focus:outline-2 outline-purple-700"
+                type="text"
+                id="name"
+                name="name"
+              />
+            </div>
+            <div>
+              <label class="py-1 block" for="username">Username</label>
+              <input
+                class="bg-gray-700 w-72 py-1 outline-0 focus:outline-2 outline-purple-700"
+                type="text"
+                id="username"
+                name="username"
+              />
+            </div>
+            <button type="submit">Salvar</button>
+          </form>
+        </div>
+
+        <div>
+          <form class="flex-col relative">
+            <div>
+              <label class="py-1 block" for="password">Senha Atual</label>
+              <input
+                class="bg-gray-700 w-72 py-1 outline-0 focus:outline-2 outline-purple-700"
+                type="password"
+                id="password"
+                name="password"
+              />
+            </div>
+            <div>
+              <label class="py-1 block" for="new-password">Nova Senha</label>
+              <input
+                class="bg-gray-700 w-72 py-1 outline-0 focus:outline-2 outline-purple-700"
+                type="password"
+                id="new-password"
+                name="new-password"
+              />
+            </div>
+            <div>
+              <label class="py-1 block" for="password-confirmation"
+                >Confirme a Nova Senha</label
+              >
+              <input
+                class="bg-gray-700 w-72 py-1 outline-0 focus:outline-2 outline-purple-700"
+                type="password"
+                id="password-confirmation"
+                name="password-confirmation"
+              />
+            </div>
+            <button type="submit">Salvar</button>
+          </form>
+        </div>
+
+        <div class="">
+          <form class="flex-col relative">DELETE ACCOUNT</form>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/js/header.js"></script>
+
+    <script type="module" src="/src/js/home.js"></script>
+  </body>
+</html>

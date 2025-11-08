@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="../../output.css" rel="stylesheet" />
     <link rel="stylesheet" href="../../css/main.css">
+
     <title>Registrar-se</title>
   </head>
   <body>
@@ -13,24 +14,40 @@
 
       <form class="flex flex-col relative">
         <div>
-          <label class="py-1 block " for="name">Nome:</label>
-          <input class="bg-gray-700 w-72 py-1 outline-0 focus:outline-2 outline-purple-700 " id="name" type="text" name="name" />
+          <label-custom for="name" content="Nome"></label-custom>
+          <input-custom 
+            type="text" 
+            name="name" 
+            id="name"
+            ></input-custom>
         </div>
         <div>
-          <label class="py-1 block " for="username">Username:</label>
-          <input class="bg-gray-700 w-72 py-1 outline-0 focus:outline-2 outline-purple-700 " id="username" type="text" name="username" />
-        </div>
+          <label-custom for="username" content="Username"></label-custom>
+          <input-custom 
+            type="text" 
+            name="username" 
+            id="username"
+            ></input-custom>
         <div>
-          <label class="py-1 block " for="password">Senha:</label>
-          <input class="bg-gray-700 w-72 py-1 outline-0 focus:outline-2 outline-purple-700 " id="password" type="password" name="password" />
+          <label-custom for="password" content="Password"></label-custom>
+          <input-custom 
+            type="password" 
+            name="password" 
+            id="password"
+            ></input-custom>
         </div>
 
         <div id="error-register" class="invisible error py-2 w-screen absolute top-[184px] ">error message</div>
-
-        <button class="mt-10 w-72 py-2 px-8 bg-gray-500 cursor-pointer hover:bg-gray-400 hover:text-gray-800 duration-600" type="submit">Enviar</button>
+        
+        <button-custom type="submit" content="Enviar"></button-custom>
+        
       </form>
     </div>
 
     <script type="module" src="../../js/register.js"></script>
+    <script src="/src/components/label-custom.js"></script>
+    <script src="/src/components/input-custom.js"></script>
+    <script src="/src/components/button-custom.js"></script>
+    
   </body>
 </html>
