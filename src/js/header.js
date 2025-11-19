@@ -6,24 +6,35 @@ const user = document.getElementById("user");
 const loggedUser = document.getElementById("logged-user");
 
 const response = await fetch(`${url_api}/users/dashboard`, {
-    method: "GET",
-    headers: {
+  method: "GET",
+  headers: {
     "Content-Type": "application/json",
-    "Authorization": `Bearer ${token}`,
-    },
+    Authorization: `Bearer ${token}`,
+  },
 });
 
-if (response.ok) {
-    const data = await response.json();
-    if (data.logged) {
-    guest.classList.remove("visible");
-    guest.classList.add("hidden");
-    loggedUser.innerText = data.user.name;
-    user.classList.remove("hidden");
-    user.classList.add("visible");
-    } else {
-    guest.classList.remove("hidden");
-    guest.classList.add("visible");
-    }
-    
+const data = await response.json();
+
+if (!token) {
+  // não logado
+
+  //user invisivel
+  user.classList.add("hidden");
+  user.classList.remove("visible");
+
+  //guest visivel
+  guest.classList.add("visible");
+  guest.classList.remove("hidden");
+} else {
+  // logado
+
+  // user visivel
+  user.classList.add("visible");
+  user.classList.remove("hidden");
+
+  // guest invisivel
+  guest.classList.add("hidden");
+  guest.classList.remove("visible");
+
+  loggedUser.innerText = data.user.name;
 }

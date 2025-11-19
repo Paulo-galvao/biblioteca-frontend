@@ -11,5 +11,5 @@ class InputCustom extends HTMLElement {
     }
 }
 
-customElements.define("input-custom", InputCustom);
+customElements.define("input-custom", InputCustom); 
 

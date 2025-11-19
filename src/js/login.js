@@ -7,7 +7,7 @@ async function login(e) {
 
   const username = e.target.username.value;
   const password = e.target.password.value;
-  const error = document.getElementById("error-login");
+  const error = document.getElementById("error");
 
   try {
     const response = await fetch(`${url_api}/users/login`, {

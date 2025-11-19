@@ -15,15 +15,28 @@
     
     <navigation-menu></navigation-menu>
 
-    <div id="books-show" 
-        class="flex flex-col items-center justify-center space-y-4 h-9/10">
+    <div class="flex flex-col items-center justify-center space-y-4 h-9/10">
+
+      <div id="books-show" 
+          >
+      </div>
+      
+      <div id="edit" class="hidden">
+        <a >
+          <button-custom
+            content="Editar"
+          >
+          </button-custom>
+        </a>
+      </div>
 
     </div>
 
-    <script type="module" src="/src/js/header.js"></script>
-    
+
+    <script type="module" src="/src/js/header.js"></script>    
     <script type="module" src="/src/js/book.show.js"></script>
-    
+    <script type="module" src="/src/components/button-custom.js"></script>
+
   </body>
 </html>
 

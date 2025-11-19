@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br"> 
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,7 +21,7 @@
 
     <div class="h-9/10 flex items-center justify-center">
       
-      <form class="flex flex-col relative">
+      <form class="flex flex-col items-center">
         <h2 class="mb-5 text-2xl text-center ">Adicionar Novo Livro</h2>
         <div>
           <label for="title" class="py-1 block ">Título:</label>
@@ -56,20 +56,22 @@
           >
         </div>
 
-        <button class="mt-10 w-72 py-2 px-8 bg-gray-500 cursor-pointer hover:bg-gray-400 hover:text-gray-800 duration-600" type="submit">Enviar</button>
+        <error-custom></error-custom>
+
+        <button class="w-72 py-2 px-8 bg-gray-500 cursor-pointer hover:bg-gray-400 hover:text-gray-800 duration-600" type="submit">Enviar</button>
 
       </form>
 
     </div>
 
+    <script type="module" src="/src/components/error-custom.js"></script>
     <script type="module">
       import { url_api } from "/src/js/env.js"
-      
-
-
-      console.log(url_api);
 
       document.querySelector("form").addEventListener("submit", store);
+      const error = document.getElementById("error");
+      console.log(error);
+      
 
       async function store(e) {
         e.preventDefault();
@@ -82,9 +84,6 @@
         const first_published = e.target.first_published.value;
         const url_img = e.target.url_img.value;
 
-        console.log(title, written_by, description, first_published, url_img);
-        
-        
         try {
           const response = await fetch(`${url_api}/books`, {
             method: "POST",
@@ -95,11 +94,14 @@
             body: JSON.stringify({ title, written_by, description, first_published, url_img }),
           });
 
-          console.log(response);
-          
           const data = await response.json();
 
-          console.log(data);
+          if(!response.ok) {
+            error.classList.remove("invisible");
+            error.innerHTML = data.message;
+          } else {
+            window.href.location = "/src/pages/users/dashboard";
+          }
           
         } catch (error) {
           console.log(error);

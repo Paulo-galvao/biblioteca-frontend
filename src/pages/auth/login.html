@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../../output.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../../css/main.css">
+    <link href="/src/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/css/main.css">
     <title>Login</title>
   </head>
   <body>
     <div class="main-settings h-screen flex flex-col justify-center items-center">
       <h1 class="py-2 text-2xl">Login</h1>
 
-      <form class="flex flex-col relative">
+      <form class="flex flex-col items-center">
         <div>
           <label class="py-1 block " for="username">Username:</label>
           <input class="bg-gray-700 w-72 py-1 outline-0 focus:outline-2 outline-purple-700 " id="username" type="text" name="username" />
@@ -21,12 +21,13 @@
           <input class="bg-gray-700 w-72 py-1 outline-0 focus:outline-2 outline-purple-700 " id="password" type="password" name="password" />
         </div>
 
-        <div id="error-login" class="invisible error py-2 w-screen absolute top-[122px]">error message</div>
+        <error-custom></error-custom>
 
-        <button class="mt-10 w-72 py-2 px-8 bg-gray-500 cursor-pointer hover:bg-gray-400 hover:text-gray-800 duration-600" type="submit">Enviar</button>
+        <button class=" w-72 py-2 px-8 bg-gray-500 cursor-pointer hover:bg-gray-400 hover:text-gray-800 duration-600" type="submit">Enviar</button>
       </form>
     </div>
 
-    <script type="module" src="../../js/login.js"></script>
+    <script type="module" src="/src/js/login.js"></script>
+    <script type="module" src="/src/components/error-custom.js"></script>
   </body>
-</html>
+</html> 

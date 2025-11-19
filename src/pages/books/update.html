@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="/src/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/css/main.css" />
+
+    <title>Biblioteca</title>
+  </head>
+  <body>
+    <div class="main-settings h-screen w-screen flex flex-col items-center">
+      <div class="h-full w-full max-w-[1200px]">
+        <navigation-menu></navigation-menu>
+
+        <div class="h-9/10">
+          <form class="flex flex-col items-center">
+            <h2 class="mb-5 text-2xl text-center">Atualizar Livro</h2>
+            <div>
+              <label-custom for="title" content="Título"></label-custom>
+              <input-custom name="title" type="text" id="title"></input-custom>
+            </div>
+            <div>
+              <label-custom for="written_by" content="Autor"></label-custom>
+              <input-custom
+                type="text"
+                name="written_by"
+                id="written_by"
+              ></input-custom>
+            </div>
+            <div>
+              <label-custom for="description" content="Descrição">
+              </label-custom>
+              <textarea
+                name="description"
+                id="description"
+                rows="5"
+                class="bg-gray-700 w-72 py-1 outline-0 focus:outline-2 outline-purple-700"
+              ></textarea>
+            </div>
+            <div>
+              <label-custom for="first_published" content="Primeira publicação">
+              </label-custom>
+              <input-custom
+                name="first_published"
+                type="date"
+                id="first_published"
+              ></input-custom>
+            </div>
+            <div>
+              <label-custom for="url_img" content="Url da imagem">
+              </label-custom>
+              <input-custom
+                name="url_img"
+                type="text"
+                id="url_img"
+              ></input-custom>
+            </div>
+
+            <error-custom></error-custom>
+
+            <button-custom type="submit" content="Atualizar"></button-custom>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/components/navigation.js"></script>
+    <script type="module" src="/src/components/button-custom.js"></script>
+    <script type="module" src="/src/components/label-custom.js"></script>
+    <script type="module" src="/src/components/input-custom.js"></script>
+    <script type="module" src="/src/components/error-custom.js"></script>
+
+    <script type="module" src="/src/js/header.js"></script>
+
+    <script type="module">
+        import { url_api } from "/src/js/env.js";
+
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+
+        book();
+        async function book() {
+
+            const title = document.getElementById("title").firstElementChild;
+            const written_by = document.getElementById("written_by").firstElementChild;
+            const description = document.getElementById("description");
+            const first_published = document.getElementById("first_published").firstElementChild;
+            const url_img = document.getElementById("url_img").firstElementChild;
+            
+            const response = await fetch(`${url_api}/books/${id}`);
+
+            const data = await response.json();
+            const book = data.data[0];
+            
+            title.value = book.title;
+            written_by.value = book.written_by;
+            description.value = book.description;
+            first_published.value = book.first_published.split("T")[0];
+            url_img.value = book.url_img;
+            
+        }
+    </script>
+  </body>
+</html>
