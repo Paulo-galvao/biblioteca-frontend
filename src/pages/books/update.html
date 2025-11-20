@@ -16,7 +16,7 @@
 
         <div class="h-9/10">
           <form class="flex flex-col items-center">
-            <h2 class="mb-5 text-2xl text-center">Atualizar Livro</h2>
+            <h2 class="mb-5 text-2xl text-center">Editar Livro</h2>
             <div>
               <label-custom for="title" content="Título"></label-custom>
               <input-custom name="title" type="text" id="title"></input-custom>
@@ -74,33 +74,8 @@
 
     <script type="module" src="/src/js/header.js"></script>
 
-    <script type="module">
-        import { url_api } from "/src/js/env.js";
-
-        const params = new URLSearchParams(window.location.search);
-        const id = params.get("id");
-
-        book();
-        async function book() {
-
-            const title = document.getElementById("title").firstElementChild;
-            const written_by = document.getElementById("written_by").firstElementChild;
-            const description = document.getElementById("description");
-            const first_published = document.getElementById("first_published").firstElementChild;
-            const url_img = document.getElementById("url_img").firstElementChild;
-            
-            const response = await fetch(`${url_api}/books/${id}`);
-
-            const data = await response.json();
-            const book = data.data[0];
-            
-            title.value = book.title;
-            written_by.value = book.written_by;
-            description.value = book.description;
-            first_published.value = book.first_published.split("T")[0];
-            url_img.value = book.url_img;
-            
-        }
+    <script type="module" src="/src/js/book.update.js">
+        
     </script>
   </body>
 </html>

@@ -185,14 +185,8 @@
   .relative {
     position: relative;
   }
-  .top-\[122px\] {
-    top: 122px;
-  }
   .top-\[184px\] {
     top: 184px;
-  }
-  .mt-10 {
-    margin-top: calc(var(--spacing) * 10);
   }
   .mb-5 {
     margin-bottom: calc(var(--spacing) * 5);
