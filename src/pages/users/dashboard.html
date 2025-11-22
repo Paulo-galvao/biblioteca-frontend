@@ -7,6 +7,11 @@
     <link href="/src/output.css" rel="stylesheet" />
     <link rel="stylesheet" href="/src/css/main.css" />
 
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
+
     <title>Biblioteca</title>
   </head>
   <body>
@@ -15,39 +20,37 @@
         <navigation-menu></navigation-menu>
 
         <div class="h-9/10">
-          
-<nav class="">
-        <div class="border-b-2 flex flex-col items-center py-12 space-y-2">
-          <i class="bx bx-user text-5xl"></i>
-          <div>
-            <p id="name"><!-- name --></p>
-            <p id="username"><!-- username --></p>
-          </div>
-        </div>
+          <nav class="">
+            <div class="border-b-2 flex flex-col items-center py-12 space-y-2">
+              <i class="bx bx-user text-5xl"></i>
+              <div>
+                <p id="name"><!-- name --></p>
+                <p id="username"><!-- username --></p>
+              </div>
+            </div>
 
-        <div>
-          <div>
-            <a href="/src/pages/users/profile.html">Alterar dados</a>
-          </div>
-          <div>
-            <a href="../books/store.html">Cadastrar novo livro</a>
-          </div>
-          <div>
-            <div>Suas Postagens</div>
-            <ul id="books">
-              <li class="book post"></li>
-            </ul>
-          </div>
-          <div id="logout">Logout</div>
-        </div>
-      </nav>
-
+            <div>
+              <div>
+                <a href="/src/pages/users/profile.html">Alterar dados</a>
+              </div>
+              <div>
+                <a href="../books/store.html">Cadastrar novo livro</a>
+              </div>
+              <div>
+                <div>Suas Postagens</div>
+                <ul id="books">
+                  <li class="book post"></li>
+                </ul>
+              </div>
+              <div id="logout">Logout</div>
+            </div>
+          </nav>
         </div>
       </div>
     </div>
 
     <script type="module" src="/src/components/navigation.js"></script>
-    
+
     <script type="module" src="/src/js/header.js"></script>
     <script type="module" src="/src/js/dashboard.js"></script>
   </body>

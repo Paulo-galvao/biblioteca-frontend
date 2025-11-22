@@ -4,7 +4,10 @@ class Navigation extends HTMLElement {
         <nav class="flex justify-between items-center h-1/10 border-b px-4">
 
             <div>
-                <a href="/index.html">ReadMore</a>
+                <a href="/index.html">
+                    ReadMore
+                    <i class="bi bi-book-half relative top-px "></i>    
+                </a>
             </div>
             <!-- GUEST -->
             <div id="guest" class="space-x-2">
